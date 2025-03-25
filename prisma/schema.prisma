@@ -56,6 +56,7 @@ model Petshop {
   positions     Position[]
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
+  Specie        Specie[]
 }
 
 model Employee {
@@ -212,6 +213,10 @@ model Pet {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   petshopId   String     @db.VarChar(50)
+  breedId     String?    @db.VarChar(50)
+  specieId    String?    @db.VarChar(50)
+  specie      Specie?    @relation(fields: [specieId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  breed       Breed?     @relation(fields: [breedId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   customer    Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   petshop     Petshop    @relation(fields: [petshopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   schedules   Schedule[]
@@ -221,6 +226,17 @@ model Breed {
   id        String   @id @default(uuid())
   name      String   @db.VarChar(50)
   petshopId String   @db.VarChar(50)
+  pets      Pet[]
+  petshop   Petshop  @relation(fields: [petshopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Specie {
+  id        String   @id @default(uuid())
+  name      String   @db.VarChar(50)
+  petshopId String   @db.VarChar(50)
+  pets      Pet[]
   petshop   Petshop  @relation(fields: [petshopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
