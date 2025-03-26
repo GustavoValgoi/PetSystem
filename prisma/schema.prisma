@@ -54,23 +54,24 @@ model Petshop {
   breeds        Breed[]
   employees     Employee[]
   positions     Position[]
+  species       Specie[]
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
-  Specie        Specie[]
 }
 
 model Employee {
-  id         String    @id @default(uuid())
-  name       String    @db.VarChar(150)
-  image      String?   @db.VarChar(190)
-  phone      String?   @db.VarChar(20)
-  active     Boolean   @default(true)
-  petshopId  String    @db.VarChar(50)
-  positionId String?   @db.VarChar(50)
-  petshop    Petshop   @relation(fields: [petshopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  position   Position? @relation(fields: [positionId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+  id         String     @id @default(uuid())
+  name       String     @db.VarChar(150)
+  image      String?    @db.VarChar(190)
+  phone      String?    @db.VarChar(20)
+  active     Boolean    @default(true)
+  petshopId  String     @db.VarChar(50)
+  positionId String?    @db.VarChar(50)
+  schedules  Schedule[]
+  petshop    Petshop    @relation(fields: [petshopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  position   Position?  @relation(fields: [positionId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }
 
 model Position {
@@ -210,16 +211,16 @@ model Pet {
   observation String?    @db.VarChar(200)
   image       String?    @db.VarChar(190)
   customerId  String     @db.VarChar(50)
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
   petshopId   String     @db.VarChar(50)
   breedId     String?    @db.VarChar(50)
   specieId    String?    @db.VarChar(50)
+  schedules   Schedule[]
   specie      Specie?    @relation(fields: [specieId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   breed       Breed?     @relation(fields: [breedId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   customer    Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   petshop     Petshop    @relation(fields: [petshopId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  schedules   Schedule[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
 model Breed {
@@ -243,14 +244,16 @@ model Specie {
 }
 
 model Schedule {
-  id         String   @id @default(uuid())
+  id         String    @id @default(uuid())
   day        DateTime
   startHour  DateTime
   finishHour DateTime
   petId      String
-  pet        Pet      @relation(fields: [petId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  employeeId String?
+  pet        Pet       @relation(fields: [petId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  employee   Employee? @relation(fields: [employeeId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 enum Role {
