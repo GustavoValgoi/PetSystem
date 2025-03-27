@@ -63,21 +63,20 @@ export class FileService implements OnModuleInit {
       const path = await this.sendToStorage(file, `${pathImage}/${imgName}`);
 
       return { imageName: imgName, path };
-    } catch (e) {
-      console.log('erro', e);
+    } catch {
       throw new BadRequestException('Erro ao salvar a imagem!');
     }
   }
 
   async updatePhoto(
     petshopId: string,
-    imageName: string,
+    oldImage: string,
     type: ImageFolderName,
     file: Express.Multer.File,
   ): Promise<{ imageName: string; path: string }> {
     try {
       const pathOldImage =
-        this.getDestinationPath() + `/${petshopId}/${type}/${imageName}`;
+        this.getDestinationPath() + `/${petshopId}/${type}/${oldImage}`;
       const pathImage = this.getDestinationPath() + `/${petshopId}/${type}`;
 
       this.removeFromStorage(pathOldImage);

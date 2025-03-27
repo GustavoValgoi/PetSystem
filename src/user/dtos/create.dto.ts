@@ -3,7 +3,7 @@ import {
   IsEnum,
   IsNotEmpty,
   IsOptional,
-  IsString,
+  IsUUID,
 } from 'class-validator';
 import { RegisterDto } from './register.dto';
 import { $Enums } from '@prisma/client';
@@ -18,6 +18,6 @@ export class CreateUserDto extends RegisterDto {
   role: $Enums.Role;
 
   @IsOptional()
-  @IsString()
+  @IsUUID()
   petshopId?: string;
 }

@@ -8,6 +8,9 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { PetshopModule } from './petshop/petshop.module';
 import { FileModule } from './file/file.module';
+import { EmployeeModule } from './employee/employee.module';
+import { CustomerModule } from './customer/customer.module';
+import { PetModule } from './pet/pet.module';
 
 @Module({
   imports: [
@@ -17,6 +20,9 @@ import { FileModule } from './file/file.module';
     AuthModule,
     PetshopModule,
     FileModule,
+    EmployeeModule,
+    CustomerModule,
+    PetModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

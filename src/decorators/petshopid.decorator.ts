@@ -3,22 +3,21 @@ import {
   NotFoundException,
   createParamDecorator,
 } from '@nestjs/common';
-import { UserDto } from '../user/dtos/user.dto';
 
-export const UserParam = createParamDecorator(
-  (filter: string, context: ExecutionContext) => {
+export const PetshopID = createParamDecorator(
+  (_, context: ExecutionContext) => {
     const request = context.switchToHttp().getRequest();
 
     if (!request.user) {
       throw new NotFoundException('Usuário não encontrado na requisição!');
     }
 
-    if (filter) {
-      return { [filter]: request.user[filter] };
+    if (!request.user.petshopId) {
+      throw new NotFoundException('Usuário não criou um Petshop ainda!');
     }
 
-    const user: UserDto = request.user;
+    const petshopId: string = request.user.petshopId;
 
-    return user;
+    return petshopId;
   },
 );
