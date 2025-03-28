@@ -1,5 +1,9 @@
 import { Pet } from '@prisma/client';
 import { CustomerEntity } from '../../customer/entities/customer.entity';
+import { BreedEntity } from '../../breed/entities/breed.entity';
+import { SpecieEntity } from '../../specie/entities/specie.entity';
+import { ScheduleEntity } from '../../schedule/entities/schedule.entity';
+import { PetshopEntity } from '../../petshop/entities/petshop.entity';
 
 export class PetEntity implements Pet {
   id: string;
@@ -12,5 +16,9 @@ export class PetEntity implements Pet {
   specieId: string | null;
   createdAt: Date;
   updatedAt: Date;
+  petshop?: PetshopEntity;
   customer?: CustomerEntity;
+  breed?: BreedEntity;
+  specie?: SpecieEntity;
+  schedules?: ScheduleEntity[];
 }

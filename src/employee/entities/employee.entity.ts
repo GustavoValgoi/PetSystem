@@ -1,4 +1,7 @@
 import { Employee } from '@prisma/client';
+import { PetshopEntity } from '../../petshop/entities/petshop.entity';
+import { ScheduleEntity } from '../../schedule/entities/schedule.entity';
+import { PositionEntity } from '../../position/entities/position.entity';
 
 export class EmployeeEntity implements Employee {
   id: string;
@@ -10,4 +13,7 @@ export class EmployeeEntity implements Employee {
   positionId: string | null;
   createdAt: Date;
   updatedAt: Date;
+  petshop?: PetshopEntity;
+  position?: PositionEntity;
+  schedules?: ScheduleEntity[];
 }

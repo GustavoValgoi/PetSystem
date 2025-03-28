@@ -1,5 +1,6 @@
 import { $Enums } from '@prisma/client';
 import { UserEntity } from '../entities/user.entity';
+import { PetshopDto } from '../../petshop/dtos/petshop.dto';
 
 export class UserDto {
   public id: string;
@@ -10,6 +11,7 @@ export class UserDto {
   public isRoot: boolean;
   public role: $Enums.Role;
   public petshopId: string | null;
+  public petshop?: PetshopDto;
 
   constructor(user: UserEntity) {
     this.id = user.id;
@@ -20,5 +22,6 @@ export class UserDto {
     this.isRoot = user.isRoot;
     this.role = user.role;
     this.petshopId = user.petshopId;
+    this.petshop = user.petshop ? new PetshopDto(user.petshop) : undefined;
   }
 }

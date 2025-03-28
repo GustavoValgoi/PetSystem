@@ -1,4 +1,5 @@
 import { $Enums, User } from '@prisma/client';
+import { PetshopEntity } from '../../petshop/entities/petshop.entity';
 
 export class UserEntity implements User {
   id: string;
@@ -13,4 +14,5 @@ export class UserEntity implements User {
   petshopId: string | null;
   createdAt: Date;
   updatedAt: Date;
+  petshop?: PetshopEntity;
 }

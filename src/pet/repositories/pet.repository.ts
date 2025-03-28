@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreatePetDto } from '../dtos/create.dto';
 import { PetEntity } from '../entities/pet.entity';
-import { IQueryPagination } from 'src/interfaces/query-pagination.interface';
-import { IFindPagination } from 'src/interfaces/pagination.interface';
+import { IQueryPagination } from '../../interfaces/query-pagination.interface';
+import { IFindPagination } from '../../interfaces/pagination.interface';
 
 @Injectable()
 export class PetRepository {
