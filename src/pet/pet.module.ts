@@ -6,9 +6,11 @@ import { UserModule } from '../user/user.module';
 import { FileModule } from '../file/file.module';
 import { PrismaService } from '../prisma/prisma.service';
 import { PetRepository } from './repositories/pet.repository';
+import { BreedModule } from '../breed/breed.module';
+import { SpecieModule } from '../specie/specie.module';
 
 @Module({
-  imports: [JwtModule, UserModule, FileModule],
+  imports: [JwtModule, UserModule, FileModule, BreedModule, SpecieModule],
   controllers: [PetController],
   providers: [PetService, PetRepository, PrismaService],
   exports: [PetService],

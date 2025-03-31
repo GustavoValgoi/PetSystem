@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsOptional, IsString, IsUUID } from 'class-validator';
 
-export class CreatePostionDto {
+export class CreateUpdateBreedDto {
   @IsNotEmpty()
   @IsString()
   name: string;

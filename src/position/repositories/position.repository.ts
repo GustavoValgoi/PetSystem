@@ -1,33 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { CreateCustomerDto } from '../dtos/create.dto';
-import { CustomerEntity } from '../entities/customer.entity';
 import { IRepository } from '../../interfaces/repository.interface';
-import { UpdateCustomerDto } from '../dtos/update.dto';
+import { PositionEntity } from '../entities/position.entity';
+import { CreateUpdatePostionDto } from '../dtos/create-update.dto';
 import { IFindPagination } from '../../interfaces/pagination.interface';
 import { IQueryPagination } from '../../interfaces/query-pagination.interface';
 
 @Injectable()
-export class CustomerRepository
-  implements IRepository<CustomerEntity, CreateCustomerDto, UpdateCustomerDto>
+export class PositionRepository
+  implements
+    IRepository<PositionEntity, CreateUpdatePostionDto, CreateUpdatePostionDto>
 {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(body: CreateCustomerDto): Promise<CustomerEntity> {
-    return this.prisma.customer.create({
+  async create(body: CreateUpdatePostionDto): Promise<PositionEntity> {
+    return this.prisma.position.create({
       data: body,
     });
   }
 
-  async update(id: string, body: UpdateCustomerDto): Promise<CustomerEntity> {
-    return this.prisma.customer.update({
+  async update(
+    id: string,
+    body: CreateUpdatePostionDto,
+  ): Promise<PositionEntity> {
+    return this.prisma.position.update({
       where: { id },
       data: body,
     });
   }
 
-  async delete(id: string, petshopId: string): Promise<CustomerEntity | null> {
-    return this.prisma.customer.delete({
+  async delete(id: string, petshopId: string): Promise<PositionEntity | null> {
+    return this.prisma.position.delete({
       where: { id, AND: [{ petshopId }] },
     });
   }
@@ -35,8 +38,8 @@ export class CustomerRepository
   async findById(
     id: string,
     petshopId: string,
-  ): Promise<CustomerEntity | null> {
-    return this.prisma.customer.findFirst({
+  ): Promise<PositionEntity | null> {
+    return this.prisma.position.findFirst({
       where: { id, AND: [{ petshopId }] },
     });
   }
@@ -44,10 +47,10 @@ export class CustomerRepository
   async findAll(
     petshopId: string,
     query: IQueryPagination,
-  ): Promise<IFindPagination<CustomerEntity>> {
+  ): Promise<IFindPagination<PositionEntity>> {
     const where = { petshopId };
-    const count = await this.prisma.customer.count({ where });
-    const data = await this.prisma.customer.findMany({
+    const count = await this.prisma.employee.count({ where });
+    const data = await this.prisma.employee.findMany({
       where,
       skip: (query.page - 1) * query.limit,
       take: query.limit,

@@ -18,7 +18,7 @@ export class PetEntity implements Pet {
   updatedAt: Date;
   petshop?: PetshopEntity;
   customer?: CustomerEntity;
-  breed?: BreedEntity;
-  specie?: SpecieEntity;
+  breed?: BreedEntity | null;
+  specie?: SpecieEntity | null;
   schedules?: ScheduleEntity[];
 }

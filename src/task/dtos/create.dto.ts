@@ -1,31 +1,27 @@
 import {
-  IsBoolean,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   IsUUID,
 } from 'class-validator';
 
-export class CreateEmployeeDto {
+export class CreateTaskDto {
   @IsNotEmpty()
   @IsString()
   name: string;
 
+  @IsNotEmpty()
+  @IsString()
+  description: string;
+
+  @IsNotEmpty()
+  @IsNumber()
+  amount: number;
+
   @IsOptional()
   @IsString()
   image: string;
-
-  @IsOptional()
-  @IsString()
-  phone: string;
-
-  @IsOptional()
-  @IsBoolean()
-  active: boolean;
-
-  @IsOptional()
-  @IsUUID()
-  positionId: string;
 
   @IsOptional()
   @IsUUID()
