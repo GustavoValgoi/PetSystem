@@ -1,4 +1,4 @@
-import { Type } from 'class-transformer';
+import { plainToInstance, Transform, Type } from 'class-transformer';
 import {
   ArrayNotEmpty,
   IsArray,
@@ -27,6 +27,16 @@ export class CreateProductDto {
   petshopId: string;
 
   @IsNotEmpty()
+  @Transform(({ value }: { value: string }) => {
+    try {
+      value = JSON.parse(value);
+      return Array.isArray(value)
+        ? value.map(item => plainToInstance(CategoryId, item))
+        : [];
+    } catch {
+      return value;
+    }
+  })
   @IsArray()
   @ArrayNotEmpty()
   @ValidateNested({ each: true })
