@@ -49,6 +49,7 @@ export class CategoryRepository
     const count = await this.prisma.category.count({ where });
     const data = await this.prisma.category.findMany({
       where,
+      include: { products: true },
       skip: (query.page - 1) * query.limit,
       take: query.limit,
     });

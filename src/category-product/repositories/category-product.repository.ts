@@ -1,12 +1,22 @@
+import { Prisma } from '@prisma/client';
 import { Injectable } from '@nestjs/common';
 import { CategoryProductEntity } from '../entities/category-product.entity';
 import { IQueryPagination } from '../../interfaces/query-pagination.interface';
 import { IFindPagination } from '../../interfaces/pagination.interface';
 import { PrismaService } from '../../prisma/prisma.service';
+import { CreateUpdateCategoryProductDto } from '../entities/create.dto';
 
 @Injectable()
 export class CategoryProductRepository {
   constructor(private readonly prisma: PrismaService) {}
+
+  async create(
+    body: CreateUpdateCategoryProductDto[],
+  ): Promise<Prisma.BatchPayload> {
+    return this.prisma.category_Product.createMany({
+      data: body,
+    });
+  }
 
   async findByProductId(
     productId: string,
