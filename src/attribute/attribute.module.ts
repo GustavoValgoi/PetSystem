@@ -10,6 +10,6 @@ import { AttributeRepository } from './repositories/attribute.repository';
   imports: [JwtModule, UserModule],
   controllers: [AttributeController],
   providers: [AttributeService, AttributeRepository, PrismaService],
-  exports: [AttributeService],
+  exports: [AttributeService, AttributeRepository],
 })
 export class AttributeModule {}

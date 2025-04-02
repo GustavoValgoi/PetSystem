@@ -33,7 +33,7 @@ export class AttributeRepository
     });
   }
 
-  async delete(id: string, petshopId: string): Promise<AttributeEntity | null> {
+  async delete(id: string, petshopId: string): Promise<AttributeEntity> {
     return this.prisma.attribute.delete({
       where: { id, AND: [{ petshopId }] },
     });
@@ -56,6 +56,7 @@ export class AttributeRepository
     const count = await this.prisma.attribute.count({ where });
     const data = await this.prisma.attribute.findMany({
       where,
+      include: { items: true },
       skip: (query.page - 1) * query.limit,
       take: query.limit,
     });

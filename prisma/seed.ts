@@ -1,6 +1,6 @@
-import { PrismaClient, Role } from '@prisma/client'
+import { PrismaClient, Role } from '@prisma/client';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
   await prisma.user.upsert({
@@ -16,15 +16,15 @@ async function main() {
       active: Boolean(process.env.SEED_ACTIVE),
       isRoot: Boolean(process.env.SEED_ISROOT),
     },
-  })
+  });
 }
 main()
   .then(async () => {
-    console.log('Seed Ok!')
-    await prisma.$disconnect()
+    console.log('Seed Ok!');
+    await prisma.$disconnect();
   })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+  .catch(async e => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
