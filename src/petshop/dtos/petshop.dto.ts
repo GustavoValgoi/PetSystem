@@ -11,6 +11,7 @@ import { TaskDto } from '../../task/dtos/task.dto';
 import { ProductDto } from '../../product/dtos/product.dto';
 import { CategoryDto } from '../../category/dtos/category.dto';
 import { AttributeDto } from '../../attribute/dtos/attribute.dto';
+import { ScheduleDto } from '../../schedule/dto/schedule.dto';
 
 export class PetshopDto {
   public id: string;
@@ -31,6 +32,7 @@ export class PetshopDto {
   public products?: ProductDto[];
   public categories?: CategoryDto[];
   public attributes?: AttributeDto[];
+  public schedules?: ScheduleDto[];
 
   constructor(data: PetshopEntity) {
     this.id = data.id;
@@ -84,6 +86,10 @@ export class PetshopDto {
     this.attributes =
       data.attributes && data.attributes.length
         ? data.attributes.map(a => new AttributeDto(a))
+        : [];
+    this.schedules =
+      data.schedules && data.schedules.length
+        ? data.schedules.map(s => new ScheduleDto(s))
         : [];
   }
 }

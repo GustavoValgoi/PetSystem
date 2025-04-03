@@ -11,6 +11,7 @@ import { TaskEntity } from '../../task/entities/task.entity';
 import { ProductEntity } from '../../product/entities/product.entity';
 import { CategoryEntity } from '../../category/entities/category.entity';
 import { AttributeEntity } from '../../attribute/entities/attribute.entity';
+import { ScheduleEntity } from '../../schedule/entities/schedule.entity';
 
 export class PetshopEntity implements Petshop {
   id: string;
@@ -33,4 +34,5 @@ export class PetshopEntity implements Petshop {
   customers?: CustomerEntity[];
   categories?: CategoryEntity[];
   attributes?: AttributeEntity[];
+  schedules?: ScheduleEntity[];
 }

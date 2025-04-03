@@ -9,15 +9,15 @@ import {
 export class CreateScheduleDto {
   @IsNotEmpty()
   @IsDateString()
-  day: Date;
+  day: string;
 
   @IsNotEmpty()
   @IsMilitaryTime()
-  startHour: Date;
+  startHour: string;
 
   @IsNotEmpty()
   @IsMilitaryTime()
-  finishHour: Date;
+  finishHour: string;
 
   @IsNotEmpty()
   @IsUUID()
@@ -26,4 +26,8 @@ export class CreateScheduleDto {
   @IsOptional()
   @IsUUID()
   employeeId?: string;
+
+  @IsOptional()
+  @IsUUID()
+  petshopId: string;
 }
