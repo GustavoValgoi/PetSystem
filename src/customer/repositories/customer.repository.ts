@@ -26,7 +26,7 @@ export class CustomerRepository
     });
   }
 
-  async delete(id: string, petshopId: string): Promise<CustomerEntity | null> {
+  async delete(id: string, petshopId: string): Promise<CustomerEntity> {
     return this.prisma.customer.delete({
       where: { id, AND: [{ petshopId }] },
     });

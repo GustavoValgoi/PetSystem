@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { IRepository } from 'src/interfaces/repository.interface';
+import { IRepository } from '../../interfaces/repository.interface';
 import { AttributeEntity } from '../entities/attribute.entity';
 import { CreateUpdateAttributeDto } from '../dtos/create-update.dto';
-import { IFindPagination } from 'src/interfaces/pagination.interface';
-import { IQueryPagination } from 'src/interfaces/query-pagination.interface';
+import { IFindPagination } from '../../interfaces/pagination.interface';
+import { IQueryPagination } from '../../interfaces/query-pagination.interface';
 
 @Injectable()
 export class AttributeRepository

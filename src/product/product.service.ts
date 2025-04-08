@@ -10,7 +10,7 @@ import { ProductEntity } from './entities/product.entity';
 import { CreateUpdateCategoryProductDto } from '../category-product/entities/create.dto';
 import { CategoryProductService } from '../category-product/category-product.service';
 import { FileService } from '../file/file.service';
-import { ImageFolderName } from 'src/file/enums/image-folder-name.enum';
+import { ImageFolderName } from '../file/enums/image-folder-name.enum';
 
 @Injectable()
 export class ProductService {

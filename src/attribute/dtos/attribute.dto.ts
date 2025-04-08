@@ -1,7 +1,7 @@
 import { AttributeEntity } from '../entities/attribute.entity';
 import { AttributeItemDto } from '../../attribute-item/dtos/attribute-item.dto';
 import { PetshopDto } from '../../petshop/dtos/petshop.dto';
-import { VariationAttributeDto } from 'src/variation-attribute/dtos/variation-attribute.dto';
+import { VariationAttributeDto } from '../../variation-attribute/dtos/variation-attribute.dto';
 
 export class AttributeDto {
   public id: string;

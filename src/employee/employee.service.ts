@@ -3,7 +3,7 @@ import { EmployeeEntity } from './entities/employee.entity';
 import { CreateEmployeeDto } from './dtos/create.dto';
 import { EmployeeRepository } from './repositories/employee.repository';
 import { FileService } from '../file/file.service';
-import { ImageFolderName } from 'src/file/enums/image-folder-name.enum';
+import { ImageFolderName } from '../file/enums/image-folder-name.enum';
 
 @Injectable()
 export class EmployeeService {

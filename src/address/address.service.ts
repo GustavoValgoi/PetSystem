@@ -4,8 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { AddressRepository } from './repositories/address.repository';
-import { IQueryPagination } from 'src/interfaces/query-pagination.interface';
-import { IFindPagination } from 'src/interfaces/pagination.interface';
+import { IQueryPagination } from '../interfaces/query-pagination.interface';
+import { IFindPagination } from '../interfaces/pagination.interface';
 import { AddressDto } from './dtos/address.dto';
 import { AddressEntity } from './entities/address.entity';
 import { UpdateAddressDto } from './dtos/update.dto';

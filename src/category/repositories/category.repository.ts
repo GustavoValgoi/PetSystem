@@ -26,7 +26,7 @@ export class CategoryRepository
     });
   }
 
-  async delete(id: string, petshopId: string): Promise<CategoryEntity | null> {
+  async delete(id: string, petshopId: string): Promise<CategoryEntity> {
     return this.prisma.category.delete({
       where: { id, AND: [{ petshopId }] },
     });

@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsNotEmpty,
   IsNumber,
@@ -17,6 +18,7 @@ export class CreateTaskDto {
 
   @IsNotEmpty()
   @IsNumber()
+  @Type(() => Number)
   amount: number;
 
   @IsOptional()

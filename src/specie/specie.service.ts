@@ -6,9 +6,9 @@ import {
 import { SpecieRepository } from './repositories/specie.repository';
 import { SpecieEntity } from './entities/specie.entity';
 import { CreateUpdateSpecieDto } from './dtos/create-update.dto';
-import { IFindPagination } from 'src/interfaces/pagination.interface';
+import { IFindPagination } from '../interfaces/pagination.interface';
 import { SpecieDto } from './dtos/specie.dto';
-import { IQueryPagination } from 'src/interfaces/query-pagination.interface';
+import { IQueryPagination } from '../interfaces/query-pagination.interface';
 
 @Injectable()
 export class SpecieService {

@@ -1,4 +1,4 @@
-import { PetshopDto } from 'src/petshop/dtos/petshop.dto';
+import { PetshopDto } from '../../petshop/dtos/petshop.dto';
 import { TaskEntity } from '../entities/task.entity';
 
 export class TaskDto {

@@ -10,7 +10,7 @@ import { FileService } from '../file/file.service';
 import { UserService } from '../user/user.service';
 import { PetshopEntity } from './entities/petshop.entity';
 import { ImageFolderName } from '../file/enums/image-folder-name.enum';
-import { HttpAppError } from 'src/error/app.error';
+import { HttpAppError } from '../error/app.error';
 
 @Injectable()
 export class PetshopService {

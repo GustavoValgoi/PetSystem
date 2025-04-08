@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsOptional, IsString, IsUUID } from 'class-validator';
 
-export class CreateUpdatePostionDto {
+export class CreateUpdatePositionDto {
   @IsNotEmpty()
   @IsString()
   name: string;

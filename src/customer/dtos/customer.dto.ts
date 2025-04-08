@@ -1,7 +1,7 @@
-import { PetDto } from 'src/pet/dtos/pet.dto';
+import { PetDto } from '../../pet/dtos/pet.dto';
 import { CustomerEntity } from '../entities/customer.entity';
-import { AddressDto } from 'src/address/dtos/address.dto';
-import { PetshopDto } from 'src/petshop/dtos/petshop.dto';
+import { AddressDto } from '../../address/dtos/address.dto';
+import { PetshopDto } from '../../petshop/dtos/petshop.dto';
 
 export class CustomerDto {
   public id: string;

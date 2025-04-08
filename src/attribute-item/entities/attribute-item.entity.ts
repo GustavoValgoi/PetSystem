@@ -1,6 +1,6 @@
 import { Attribute_Item } from '@prisma/client';
 import { AttributeEntity } from '../../attribute/entities/attribute.entity';
-import { VariationAttributeEntity } from 'src/variation-attribute/entities/variation-attribute.entity';
+import { VariationAttributeEntity } from '../../variation-attribute/entities/variation-attribute.entity';
 
 export class AttributeItemEntity implements Attribute_Item {
   id: string;

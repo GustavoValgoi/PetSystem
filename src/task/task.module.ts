@@ -5,9 +5,10 @@ import { JwtModule } from '../jwt/jwt.module';
 import { UserModule } from '../user/user.module';
 import { PrismaService } from '../prisma/prisma.service';
 import { TaskRepository } from './repositories/task.repository';
+import { FileModule } from '../file/file.module';
 
 @Module({
-  imports: [JwtModule, UserModule],
+  imports: [JwtModule, UserModule, FileModule],
   controllers: [TaskController],
   providers: [TaskService, TaskRepository, PrismaService],
   exports: [TaskService],

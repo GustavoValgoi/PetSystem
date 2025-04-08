@@ -26,7 +26,7 @@ export class TaskRepository
     });
   }
 
-  async delete(id: string, petshopId: string): Promise<TaskEntity | null> {
+  async delete(id: string, petshopId: string): Promise<TaskEntity> {
     return this.prisma.service.delete({
       where: { id, AND: [{ petshopId }] },
     });

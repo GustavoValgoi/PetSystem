@@ -22,7 +22,7 @@ export class CustomerController {
     @Body() body: CreateCustomerDto,
     @PetshopID() petshopId: string,
   ): Promise<CustomerEntity> {
-    return this.customerService.create(body, petshopId);
+    return this.customerService.create({ ...body, petshopId });
   }
 
   @Get()

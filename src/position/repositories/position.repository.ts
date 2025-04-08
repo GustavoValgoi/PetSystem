@@ -2,18 +2,22 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { IRepository } from '../../interfaces/repository.interface';
 import { PositionEntity } from '../entities/position.entity';
-import { CreateUpdatePostionDto } from '../dtos/create-update.dto';
+import { CreateUpdatePositionDto } from '../dtos/create-update.dto';
 import { IFindPagination } from '../../interfaces/pagination.interface';
 import { IQueryPagination } from '../../interfaces/query-pagination.interface';
 
 @Injectable()
 export class PositionRepository
   implements
-    IRepository<PositionEntity, CreateUpdatePostionDto, CreateUpdatePostionDto>
+    IRepository<
+      PositionEntity,
+      CreateUpdatePositionDto,
+      CreateUpdatePositionDto
+    >
 {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(body: CreateUpdatePostionDto): Promise<PositionEntity> {
+  async create(body: CreateUpdatePositionDto): Promise<PositionEntity> {
     return this.prisma.position.create({
       data: body,
     });
@@ -21,7 +25,7 @@ export class PositionRepository
 
   async update(
     id: string,
-    body: CreateUpdatePostionDto,
+    body: CreateUpdatePositionDto,
   ): Promise<PositionEntity> {
     return this.prisma.position.update({
       where: { id },
@@ -29,7 +33,7 @@ export class PositionRepository
     });
   }
 
-  async delete(id: string, petshopId: string): Promise<PositionEntity | null> {
+  async delete(id: string, petshopId: string): Promise<PositionEntity> {
     return this.prisma.position.delete({
       where: { id, AND: [{ petshopId }] },
     });
