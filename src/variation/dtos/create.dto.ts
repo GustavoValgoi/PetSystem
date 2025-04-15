@@ -24,6 +24,10 @@ export class CreateVariationDto {
   coust: number;
 
   @IsOptional()
+  @IsUUID()
+  petshopId: string;
+
+  @IsOptional()
   @IsNumber()
   stock: number;
 

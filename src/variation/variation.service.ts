@@ -7,13 +7,17 @@ import { VariationRepository } from './repositories/variation.repository';
 import { VariationEntity } from './entities/variation.entity';
 import { CreateVariationDto } from './dtos/create.dto';
 import { UpdateVariationDto } from './dtos/update.dto';
+import { VariationDto } from './dtos/variation.dto';
 import { IQueryPagination } from '../interfaces/query-pagination.interface';
 import { IFindPagination } from '../interfaces/pagination.interface';
-import { VariationDto } from './dtos/variation.dto';
+import { ProductService } from '../product/product.service';
 
 @Injectable()
 export class VariationService {
-  constructor(private readonly variationRepository: VariationRepository) {}
+  constructor(
+    private readonly variationRepository: VariationRepository,
+    private readonly productService: ProductService,
+  ) {}
 
   async findById(id: string, productId: string): Promise<VariationEntity> {
     const variation = await this.variationRepository.findById(id, productId);
@@ -36,18 +40,25 @@ export class VariationService {
   }
 
   async create(body: CreateVariationDto): Promise<VariationEntity> {
+    const { petshopId, ...data } = body;
+
+    await this.productService.findById(data.productId, petshopId);
+
     try {
-      return this.variationRepository.create(body);
+      return this.variationRepository.create(data);
     } catch {
       throw new BadRequestException('Houve um problema ao criar a variação!');
     }
   }
 
   async update(id: string, body: UpdateVariationDto): Promise<VariationEntity> {
-    await this.findById(id, body.productId);
+    const { petshopId, ...data } = body;
+
+    await this.productService.findById(data.productId, petshopId);
+    await this.findById(id, data.productId);
 
     try {
-      return this.variationRepository.update(id, body);
+      return this.variationRepository.update(id, data);
     } catch {
       throw new BadRequestException(
         'Houve um problema ao atualizar a variação!',

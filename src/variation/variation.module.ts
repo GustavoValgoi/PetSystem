@@ -5,9 +5,10 @@ import { JwtModule } from '../jwt/jwt.module';
 import { UserModule } from '../user/user.module';
 import { PrismaService } from '../prisma/prisma.service';
 import { VariationRepository } from './repositories/variation.repository';
+import { ProductModule } from '../product/product.module';
 
 @Module({
-  imports: [JwtModule, UserModule],
+  imports: [JwtModule, UserModule, ProductModule],
   controllers: [VariationController],
   providers: [VariationService, VariationRepository, PrismaService],
   exports: [VariationService],

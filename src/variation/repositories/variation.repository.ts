@@ -14,13 +14,18 @@ export class VariationRepository
 {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(body: CreateVariationDto): Promise<VariationEntity> {
+  async create(
+    body: Omit<CreateVariationDto, 'petshopId'>,
+  ): Promise<VariationEntity> {
     return this.prisma.variation.create({
       data: body,
     });
   }
 
-  async update(id: string, body: UpdateVariationDto): Promise<VariationEntity> {
+  async update(
+    id: string,
+    body: Omit<UpdateVariationDto, 'petshopId'>,
+  ): Promise<VariationEntity> {
     return this.prisma.variation.update({
       where: { id },
       data: body,

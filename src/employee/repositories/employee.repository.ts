@@ -26,7 +26,7 @@ export class EmployeeRepository
     });
   }
 
-  async delete(id: string, petshopId: string): Promise<EmployeeEntity | null> {
+  async delete(id: string, petshopId: string): Promise<EmployeeEntity> {
     return this.prisma.employee.delete({
       where: { id, AND: [{ petshopId }] },
     });

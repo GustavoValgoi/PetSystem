@@ -12,8 +12,9 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { Roles } from '../decorators/role.decorator';
+import { PetDto } from './dtos/pet.dto';
 import { RoleEnum } from '../enums/role.enum';
+import { Roles } from '../decorators/role.decorator';
 import { AuthGuard } from '../guards/auth.guard';
 import { RoleGuard } from '../guards/role.guard';
 import { PetService } from './pet.service';
@@ -22,7 +23,6 @@ import { PetshopID } from '../decorators/petshopid.decorator';
 import { FileValidationPipe } from '../pipes/file-validation.pipe';
 import { IQueryPagination } from '../interfaces/query-pagination.interface';
 import { IFindPagination } from '../interfaces/pagination.interface';
-import { PetDto } from './dtos/pet.dto';
 import { UpdatePetDto } from './dtos/update.dto';
 
 @UseGuards(AuthGuard, RoleGuard)
